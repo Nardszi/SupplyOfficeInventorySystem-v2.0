@@ -79,7 +79,7 @@ A web-based inventory management system built with Laravel for the Central Phili
 
 ---
 
-## Setup
+## Setup (Local)
 
 1. Clone the repo and install dependencies:
    ```bash
@@ -104,3 +104,43 @@ A web-based inventory management system built with Laravel for the Central Phili
    ```
 
 > For local XAMPP setup, place the project under `htdocs` and access via `http://localhost/[folder]/public`.
+
+---
+
+## Deploying to Vercel
+
+### Requirements
+- A remote MySQL database (e.g., [PlanetScale](https://planetscale.com), [Aiven](https://aiven.io), or [Clever Cloud](https://clever-cloud.com) — all have free tiers)
+- [Vercel CLI](https://vercel.com/docs/cli) or connect your GitHub repo on vercel.com
+
+### Steps
+
+1. Push this repo to GitHub (already done).
+
+2. Go to [vercel.com](https://vercel.com), import the GitHub repo.
+
+3. Set the following Environment Variables in Vercel project settings:
+
+   | Key | Value |
+   |-----|-------|
+   | `APP_KEY` | Run `php artisan key:generate --show` locally |
+   | `APP_ENV` | `production` |
+   | `APP_DEBUG` | `false` |
+   | `APP_URL` | Your Vercel URL e.g. `https://your-app.vercel.app` |
+   | `DB_CONNECTION` | `mysql` |
+   | `DB_HOST` | Your remote DB host |
+   | `DB_PORT` | `3306` |
+   | `DB_DATABASE` | Your DB name |
+   | `DB_USERNAME` | Your DB username |
+   | `DB_PASSWORD` | Your DB password |
+   | `SESSION_DRIVER` | `cookie` |
+   | `CACHE_STORE` | `array` |
+   | `QUEUE_CONNECTION` | `sync` |
+   | `LOG_CHANNEL` | `stderr` |
+
+4. After first deploy, run migrations against your remote DB:
+   ```bash
+   php artisan migrate --force
+   ```
+
+> Note: File uploads (profile pictures, DB backups) won't persist on Vercel's serverless filesystem. For production, use a cloud storage service like AWS S3 or Cloudflare R2.
