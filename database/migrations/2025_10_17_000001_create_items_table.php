@@ -12,8 +12,8 @@ return new class extends Migration {
             $table->string('brand')->nullable();
             $table->string('model')->nullable();
             $table->string('serial_number')->nullable();
-            $table->enum('category', ['office_supplies','ict_office_supplies','cleaning_supplies','agronomic_supplies']);
-            $table->enum('unit', ['PCS','REAM','BOX','SET','BOTTLE','PACK','LITER','MILLILITER','GALLON','METER','CENTIMETER','KILOGRAM','GRAM','ROLL','CAN','TUBE','BAG','SACK'])->default('PCS');
+            $table->string('category')->default('office_supplies');
+            $table->string('unit', 20)->default('PCS');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2)->default(0);
             $table->integer('quantity')->default(0);

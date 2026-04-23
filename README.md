@@ -127,12 +127,13 @@ A web-based inventory management system built with Laravel for the Central Phili
    | `APP_ENV` | `production` |
    | `APP_DEBUG` | `false` |
    | `APP_URL` | Your Vercel URL e.g. `https://your-app.vercel.app` |
-   | `DB_CONNECTION` | `mysql` |
-   | `DB_HOST` | Your remote DB host |
-   | `DB_PORT` | `3306` |
+   | `DB_CONNECTION` | `pgsql` |
+   | `DB_HOST` | Your Vercel Postgres host |
+   | `DB_PORT` | `5432` |
    | `DB_DATABASE` | Your DB name |
    | `DB_USERNAME` | Your DB username |
    | `DB_PASSWORD` | Your DB password |
+   | `DB_SSLMODE` | `require` |
    | `SESSION_DRIVER` | `cookie` |
    | `CACHE_STORE` | `array` |
    | `QUEUE_CONNECTION` | `sync` |
